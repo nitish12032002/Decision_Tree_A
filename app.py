@@ -20,7 +20,7 @@ X = dataset.iloc[:, [2, 3]].values
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X = sc.fit_transform(X)
-def predict_note_authentication(UserID, Gender,Age,EstimatedSalary):
+def predict_note_authentication(Age,EstimatedSalary):
   output= model.predict(sc.transform([[Age,EstimatedSalary]]))
   print("Purchased", output)
   if output==[1]:
@@ -44,8 +44,6 @@ def main():
    """
     st.markdown(html_temp,unsafe_allow_html=True)
     st.header("Item Purchase Prediction")
-    UserID = st.text_input("UserID","")
-    Gender = st.selectbox('Gender',('Male', 'Female', 'Others'))
     Age = st.number_input("Insert Age",18,60)
     EstimatedSalary = st.number_input("Insert salary",15000,150000)
     resul=""
